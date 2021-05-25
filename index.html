@@ -1,5 +1,5 @@
 <head>
-  <title>Yawn Counter</title>
+  <title>Blink Detector</title>
   <!-- Load required packages -->
 <script src="https://cdn.jsdelivr.net/npm/three@0.106.2/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/scatter-gl@0.0.1/lib/scatter-gl.min.js"></script>
@@ -28,8 +28,8 @@
 <body>
   <div>
     <h1 style = "text-align:center;">Yawn Counter</h1>
-    <h2  style = "text-align:center;">Count Yawns using pretrained Facial Keypoint Detection model</h2>
-    <h3 id="yawnTag">Yawns Counted 0</h3>
+    <h2  style = "text-align:center;">Counts the number of yawns using Facial Keypoint Detection model</h2>
+    <h3 id = "yawnTag" style="text-align:center;">Yawns Counted = 0</h3>
   </div>
   <div id="main">
     <div class="container">
@@ -48,9 +48,9 @@
       <!-- Div to show facial landmarks -->
       <div id="scatter-gl-container" style="left: 270px;"></div>
       <div>
-        <b>Alarm Threshold</b>
-        <input type="range" id="rangeInput" value = 100 min="50" max="250" onchange="updateTextInput(this.value);">
-        <input type="text" id="textInput" value="100" onchange="updateRangeInput(this.value);">
+        <b>Threshold</b>
+        <input type="range" id="rangeInput" value = 300 min="50" max="500" onchange="updateTextInput(this.value);">
+        <input type="text" id="textInput" value="300" onchange="updateRangeInput(this.value);">
       </div>
       <div>
         <b>Show Prediction Mesh on Camera Feed</b>

@@ -2,11 +2,11 @@
 var xVal = 0;
 var predictions;
 var smooth = 15;
-var threshold = 50;
+var threshold = 300;
 var mouthreading = [];
 var mouthavg = [];
 var yawnCounter = 0;
-var yawn = false;
+var yawnStatus = false;
 
 function distVec(v1, v2) {
   var dx = v1[0] - v2[0];
@@ -26,6 +26,11 @@ function updateTextInput(val) {
 function updateRangeInput(val) {
   document.getElementById('rangeInput').value = parseInt(val);;
   threshold = val;
+}
+
+// Function to update yawnTag
+function updateYawnTag(val){
+  document.getElementById('yawnTag').innerHTML = 'Yawns Counted = ' + val;
 }
 
 // Function to print prediction on video feed
@@ -52,8 +57,8 @@ var chart = new CanvasJS.Chart("chartContainer", {
     text: "Smoothed Distance between Lips"
   },
   axisY: {
-    minimum: 0,
-    maximum: 200
+    minimum: 30,
+    maximum: 1000
   },
   data: [{
       type: "line",
@@ -81,10 +86,8 @@ callProcessing = function(){
   // Calculating distances between eyelids
   var points = predictions[0]['mesh']
   mouth = (distVec(points[38], points[86]) + distVec(points[268], points[316])) / 2
-  // righteye = (distVec(points[159], points[145]) + distVec(points[158], points[153])) / 2
   
   mouthreading.push(mouth)
-  // rightreading.push(righteye)
   
   // Pushing new values in array
   if (mouthreading.length > smooth) {
@@ -93,28 +96,25 @@ callProcessing = function(){
       y: smoothing(mouthreading, smooth)
     })
   }
-  
   xVal++;
 
   // Shifting graph is the space is full
   if (mouthreading.length > 4*smooth){
     mouthavg.shift();
-    // rightavg.shift();
   }
 
   // BUSINESS LOGIC FOR BEEPING WHEN EYES ARE CLOSED
   // Calling beep function is both eye distances fall below threshold
   if (mouthreading.length > smooth) {
     if (mouthavg.slice(-1)[0]['y'] > threshold) {
-      if (yawn == false){
+      // beep();
+      if (yawnStatus == false){
         yawnCounter++;
-        yawn = true;
-        document.getElementById('yawnTag').innerHTML = "Yawns Counted " + yawnCounter;
+        updateYawnTag(yawnCounter)
+        yawnStatus = true;
       }
-      beep();
-    }
-    else{
-      yawn = false;
+    } else {
+      yawnStatus = false;
     }
   }
 

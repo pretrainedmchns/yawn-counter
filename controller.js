@@ -178,14 +178,6 @@ const BLUE = "#157AB3";
 var callProcessing;
 var checkValue = false;
 
-function distVec(v1, v2) {
-    var dx = v1[0] - v2[0];
-    var dy = v1[1] - v2[1];
-    var dz = v1[2] - v2[2];
-
-    return Math.sqrt(dx * dx + dy * dy + dz * dz) * 10;
-}
-
 function isMobile() {
     const isAndroid = /Android/i.test(navigator.userAgent);
     const isiOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
