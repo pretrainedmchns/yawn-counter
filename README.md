@@ -1,25 +1,25 @@
 <p align="center">
- <img src="blink-detector.JPG" width="500"> 
+ <img src="yawn-counter.JPG" width="500"> 
 </p>
 
 
-# [Build an AI Sleep Detector in Less than 60 minutes](https://www.youtube.com/watch?v=c8OEpGYkCFs)
+# [Count Yawns using Facial Keypoint Detector](https://www.youtube.com/watch?v=SuqNFKtv7DE)
 
-This repository hosts code to run a blink detector/alarm in your browser. The code uses a pretrained facial keypoint detector model, hosted on the [tf-js models](https://github.com/tensorflow/tfjs-models) repository. 
+This repository hosts code to run a yawn counter in your browser. The code uses a pretrained facial keypoint detector model, hosted on the [tf-js models](https://github.com/tensorflow/tfjs-models) repository. 
 
-The code has been taken from the [facial landmark detector demo](https://github.com/tensorflow/tfjs-models/tree/master/face-landmarks-detection/demo) (FLD) page of the repository and has been refactored to work in the browser using Tensorflow-JS 2.4.0. 
+The base code has been taken from the [facial landmark detector demo](https://github.com/tensorflow/tfjs-models/tree/master/face-landmarks-detection/demo) (FLD) page of the repository and has been refactored to work in the browser using Tensorflow-JS 2.4.0. 
 
 ## How Does It Work?
 
-After the FLD model predicts the keypoint location. Eyebrow keypoints (refer to [mesh map](./mesh_map.jpg)) are used to calculate the distance between the upper and lower eyebrows.
+After the FLD model predicts the keypoint location. Lip keypoints (refer to [mesh map](./mesh_map.jpg)) are used to calculate the distance between the upper and lower lips.
 
-The distance is plotted on a line chart for easy visualization. Whenever the distance for both left and right eye falls below a threshold, a beep function is called.
+The distance is plotted on a line chart for easy visualization. Whenever the distance between both lips rises above below a threshold, a update counter function is called.
 
 ## What can YOU Do?
 
 The following are some low hanging fruits for you to try:
 
-- Add code to make the blink detection robust to camera angle changes.
+- Add code to make the yawn countre robust to camera angle changes and duration of yawn.
 - Add code for automatic threshold calculation.
 
 # Feedback
