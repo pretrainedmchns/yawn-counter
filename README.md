@@ -1,5 +1,5 @@
 <p align="center">
- <img src="yawn-counter.JPG" width="500"> 
+ <img src="yawn-counter.jpeg" width="500"> 
 </p>
 
 
