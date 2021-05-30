@@ -19,7 +19,7 @@ The distance is plotted on a line chart for easy visualization. Whenever the dis
 
 The following are some low hanging fruits for you to try:
 
-- Add code to make the yawn countre robust to camera angle changes and duration of yawn.
+- Add code to make the yawn counter robust to camera angle changes and duration of yawn.
 - Add code for automatic threshold calculation.
 
 # Feedback
